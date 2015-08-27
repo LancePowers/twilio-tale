@@ -5,7 +5,8 @@ var utility = require('../utility/utility.js');
 // console.log(twilio);
 
 router.post('/', function(req, res, next) {
-  utility.sendMessage(req.params.body, req.params.from)
+  //utility.sendMessage(req.params.body, req.params.from)
+  res.send('hi')
 });
 
 module.exports = router;

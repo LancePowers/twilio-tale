@@ -3,7 +3,9 @@ var router = express.Router();
 var twilio = require('twilio')
 var utility = require('../utility/utility.js');
 // console.log(twilio);
-
+router.get('/', function(req,res,next){
+  res.send('hi');
+})
 router.post('/', function(req, res, next) {
   //utility.sendMessage(req.params.body, req.params.from)
   res.send('hi')

@@ -58,3 +58,7 @@ function sendMessage(message, number){
       console.log(message.sid);
     });
 }
+
+module.exports = {
+  sendMessage: sendMessage
+}

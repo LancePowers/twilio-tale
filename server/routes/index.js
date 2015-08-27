@@ -7,6 +7,7 @@ router.get('/', function(req,res,next){
   res.send('hi');
 })
 router.post('/', function(req, res, next) {
+  console.log('Iwonder if this works')
   utility.sendMessage(req.body.body, req.body.from)
   res.send('hi')
 });

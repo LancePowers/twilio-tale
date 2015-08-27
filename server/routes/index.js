@@ -36,7 +36,13 @@ var cohort =
 {name: 'Zoe', number:'+16036178399'}
 ];
 
-
+function nextNumber(incomingNumber){
+  for (var i = 0; i < cohort.length; i++) {
+    if(cohort[i].number === incomingNumber){
+      return(cohort[i+1].number);
+    }
+  }
+}
 
 var accountSid = 'AC0b27ba7b433e49c90967b534102c8ad8';
 var authToken = 'c8af31735b6f91c32b06126df0905308';

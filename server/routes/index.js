@@ -44,6 +44,12 @@ function nextNumber(incomingNumber){
   }
 }
 
+function updateMessage(incomingMessage){
+  story += incomingMessage + ' \n';
+  message = incomingMessage;
+  return message;
+}
+
 var accountSid = 'AC0b27ba7b433e49c90967b534102c8ad8';
 var authToken = 'c8af31735b6f91c32b06126df0905308';
 
@@ -53,7 +59,7 @@ router.post('/', function(req, res, next) {
       to: nextNumber(req.body.From),
       // to: '+17192381373',
       from: "+17203707677",
-      body: 'work please'
+      body: updateMessage(req.body.Body)
       // body: updateMessage(message)
     }, function(err, message) {
       console.log(message.sid);

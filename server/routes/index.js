@@ -3,8 +3,8 @@ var router = express.Router();
 var twilio = require('twilio')
 var utility = require('../utility/utility.js');
 // console.log(twilio);
-router.get('/', function(req,res,next){
-  res.send('hi');
+router.get('/story', function(req,res,next){
+  res.render('index',{title: story})
 })
 
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
@@ -14,7 +14,6 @@ var cohort =
 {name:'Alex', number:'+18593962722'},
 {name:'Amber', number: '+13039194337'},
 {name:'Ashley', number: '+19706586078'},
-{name:'Ben', number:'+19785052189'},
 {name: 'Bradley', number:'+17204733643'},
 {name:'Chip', number: '+13036467088'},
 {name:'Dominic', number:'+19704206721'},
@@ -26,12 +25,13 @@ var cohort =
 {name: 'Kyle', number: '+13034756824'},
 {name: 'Lance', number: '+17192381373'},
 {name: 'Yusef', number: '+18082778469'},
+{name:'Ben', number:'+19785052189'},
+{name: 'Sarah', number:'+13035200766'},
 {name: 'Lucy', number: '+14843565141'},
 {name: 'Luis', number:'+17203087425'},
 {name: 'Patrick', number:'+12243884883'},
 {name: 'Pete', number: '+15102891955'},
 {name: 'Robert', number:'+18473464660'},
-{name: 'Sarah', number:'+13035200766'},
 {name: 'Suhayl', number:'+17209993948'},
 {name: 'Zoe', number:'+16036178399'}
 ];

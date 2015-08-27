@@ -38,7 +38,7 @@ function updateMessage(incomingMessage){
 function nextNumber(incomingNumber){
   for (var i = 0; i < cohort.length; i++) {
     if(cohort[i].number === incomingNumber){
-      return(cohort[i].number);
+      return(cohort[i+1].number);
     }
   }
 }

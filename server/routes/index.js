@@ -7,7 +7,7 @@ router.get('/', function(req,res,next){
   res.send('hi');
 })
 router.post('/', function(req, res, next) {
-  //utility.sendMessage(req.params.body, req.params.from)
+  utility.sendMessage(req.body.body, req.body.from)
   res.send('hi')
 });
 

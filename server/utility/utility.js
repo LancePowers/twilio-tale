@@ -49,7 +49,6 @@ function sendMessage(message, number){
   var authToken = 'c8af31735b6f91c32b06126df0905308';
   //require the Twilio module and create a REST client
   var client = require('twilio')(accountSid, authToken);
-  for (var i = 0; i < cohort.length; i++) {
     client.messages.create({
       to: nextNumber(number),
       from: "+17203707677",
@@ -57,5 +56,4 @@ function sendMessage(message, number){
     }, function(err, message) {
       console.log(message.sid);
     });
-  }
 }

@@ -7,9 +7,16 @@ router.get('/', function(req,res,next){
   res.send('hi');
 })
 router.post('/', function(req, res, next) {
-  console.log('Iwonder if this works')
-  utility.sendMessage(req.body.body, req.body.from)
-  res.send('hi')
+  var client = require('twilio')(accountSid, authToken);
+    client.messages.create({
+      // to: nextNumber(number),
+      to: '+17192381373'
+      from: "+17203707677",
+      body: 'work please'
+      // body: updateMessage(message)
+    }, function(err, message) {
+      console.log(message.sid);
+    });
 });
 
 module.exports = router;

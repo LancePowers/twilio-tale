@@ -10,7 +10,7 @@ var accountSid = 'AC0b27ba7b433e49c90967b534102c8ad8';
 var authToken = 'c8af31735b6f91c32b06126df0905308';
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
 var story = "";
-var activeNumber = "+17192381373"
+var activeNumber = 17192381373;
 var cohort =
 [
 {name:'Alex', number:'+18593962722'},
@@ -45,12 +45,14 @@ var cohort =
 
 // post method.
 router.post('/', function(req, res, next) {
+  console.log(req.body.From);
+  console.log(activeNumber);
   if(isUserTurn(req.body.From)){
     sendMessage(req.body.From, req.body.Body);
   } else {
     notYourTurn(req.body.From);
   }
-  res.json(activeNumber);
+  res.end();
 });
 
 //Finds the current number, sets the next as the active number and returns
@@ -74,7 +76,8 @@ function isLastNumber(incomingNumber){
 
 //determines if the incoming message is from the next user.
 function isUserTurn(incomingNumber){
-  if(incomingNumber === activeNumber){return true;}
+  console.log(incomingNumber == activeNumber);
+  if(incomingNumber == activeNumber){return true;}
 }
 
 // adds incoming message to story, updates the message var, and returns.
@@ -85,26 +88,28 @@ function updateMessage(incomingNumber, incomingMessage){
 }
 
 // sends
-function sendMessage(incomingNumber, incomingMessage)
+function sendMessage(incomingNumber, incomingMessage) {
 var client = require('twilio')(accountSid, authToken);
   client.messages.create({
     to: nextNumber(incomingNumber),
     from: "+17203707677",
     body: updateMessage(incomingNumber, incomingMessage)
   }, function(err, message) {
-    console.log(message.sid);
+    console.log(incomingMessage, incomingNumber);
   });
+}
 // {console.log('send message ', updateMessage(incomingNumber, incomingMessage), nextNumber(incomingNumber))}
 
-function notYourTurn(incomingNumber)
+function notYourTurn(incomingNumber) {
 var client = require('twilio')(accountSid, authToken);
   client.messages.create({
     to: incomingNumber,
     from: "+17203707677",
     body: 'Wait your turn!'
   }, function(err, message) {
-    console.log(message.sid);
+    console.log('in not your turn');
   });
+}
 // {console.log(incomingNumber)}
 
 module.exports = router;

@@ -6,8 +6,8 @@ router.get('/story', function(req,res,next){
   res.render('index',{title: story})
 })
 
-var accountSid = api.accountSid;
-var authToken = api.authToken;
+var accountSid = 'AC0b27ba7b433e49c90967b534102c8ad8';
+var authToken = 'c8af31735b6f91c32b06126df0905308';
 
 
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."

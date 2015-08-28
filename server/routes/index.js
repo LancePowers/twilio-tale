@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var twilio = require('twilio');
-var api = require('../../api-token');
 router.get('/story', function(req,res,next){
   res.render('index',{title: story})
 })

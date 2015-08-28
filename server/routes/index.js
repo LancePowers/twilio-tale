@@ -8,7 +8,7 @@ router.get('/story', function(req,res,next){
 
 var accountSid = api.accountSid;
 var authToken = api.authToken;
-  console.log(accountSid, authToken)
+
 
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
 var story = "";
@@ -92,6 +92,7 @@ function updateMessage(incomingNumber, incomingMessage){
 
 // sends
 function sendMessage(incomingNumber, incomingMessage) {
+console.log(accountSid, authToken);
 var client = require('twilio')(accountSid, authToken);
   client.messages.create({
     to: nextNumber(incomingNumber),

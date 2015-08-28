@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var twilio = require('twilio')
-var utility = require('../utility/utility.js');
-// console.log(twilio);
 router.get('/story', function(req,res,next){
   res.render('index',{title: story})
 })
 
+
+var accountSid = 'AC0b27ba7b433e49c90967b534102c8ad8';
+var authToken = 'c8af31735b6f91c32b06126df0905308';
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
 var story = "";
 var activeNumber = "+17192381373"
@@ -42,44 +43,67 @@ var cohort =
 {name: 'Zoe', number:'+16036178399'}
 ];
 
+// post method.
+router.post('/', function(req, res, next) {
+  if(isUserTurn(req.body.From)){
+    sendMessage(req.body.From, req.body.Body);
+  } else {
+    notYourTurn(req.body.From);
+  }
+});
+
+//Finds the current number, sets the next as the active number and returns
 function nextNumber(incomingNumber){
-  if(incomingNumber === cohort[cohort.length-1].number){
-    activeNumber = cohort[1].number;
+  if(isLastNumber(incomingNumber)){
+    activeNumber = cohort[0].number;
     return activeNumber;
-  } else{
-    for (var i = 0; i < cohort.length; i++) {
-      if(cohort[i].number === incomingNumber){
-        activeNumber = cohort[i+1].number;
-        return activeNumber;
-      }
+  }
+  for (var i = 0; i < cohort.length; i++) {
+    if(cohort[i].number === incomingNumber){
+      activeNumber = cohort[i+1].number;
+      return activeNumber;
     }
   }
 }
 
+//determines if the incoming number is the last in the array.
+function isLastNumber(incomingNumber){
+  if(incomingNumber === cohort[cohort.length-1].number){ return true; }
+}
+
+//determines if the incoming message is from the next user.
+function isUserTurn(incomingNumber){
+  if(incomingNumber === activeNumber){return true;}
+}
+
+// adds incoming message to story, updates the message var, and returns.
 function updateMessage(incomingNumber, incomingMessage){
-  if(incomingNumber !== activeNumber){
-    return 'Wait your turn!';
-  } else {
     story += incomingMessage + ' \n';
     message = incomingMessage;
     return message;
- }
 }
 
-var accountSid = 'AC0b27ba7b433e49c90967b534102c8ad8';
-var authToken = 'c8af31735b6f91c32b06126df0905308';
+// sends
+function sendMessage(incomingNumber, incomingMessage)
+{console.log('send message ', updateMessage(incomingNumber, incomingMessage), nextNumber(incomingNumber))}
+// var client = require('twilio')(accountSid, authToken);
+//   client.messages.create({
+//     to: nextNumber(incomingNumber),
+//     from: "+17203707677",
+//     body: updateMessage(incomingNumber, incomingMessage)
+//   }, function(err, message) {
+//     console.log(message.sid);
+//   });
 
-router.post('/', function(req, res, next) {
-  var client = require('twilio')(accountSid, authToken);
-    client.messages.create({
-      to: nextNumber(req.body.From),
-      // to: '+17192381373',
-      from: "+17203707677",
-      body: updateMessage(req.body.From, req.body.Body)
-      // body: updateMessage(message)
-    }, function(err, message) {
-      console.log(message.sid);
-    });
-});
+function notYourTurn(incomingNumber)
+{console.log(incomingNumber)}
+// var client = require('twilio')(accountSid, authToken);
+//   client.messages.create({
+//     to: incomingNumber,
+//     from: "+17203707677",
+//     body: 'Wait your turn!'
+//   }, function(err, message) {
+//     console.log(message.sid);
+//   });
 
 module.exports = router;

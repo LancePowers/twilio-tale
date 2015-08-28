@@ -50,6 +50,7 @@ router.post('/', function(req, res, next) {
   } else {
     notYourTurn(req.body.From);
   }
+  res.json(activeNumber);
 });
 
 //Finds the current number, sets the next as the active number and returns
@@ -85,25 +86,25 @@ function updateMessage(incomingNumber, incomingMessage){
 
 // sends
 function sendMessage(incomingNumber, incomingMessage)
-{console.log('send message ', updateMessage(incomingNumber, incomingMessage), nextNumber(incomingNumber))}
-// var client = require('twilio')(accountSid, authToken);
-//   client.messages.create({
-//     to: nextNumber(incomingNumber),
-//     from: "+17203707677",
-//     body: updateMessage(incomingNumber, incomingMessage)
-//   }, function(err, message) {
-//     console.log(message.sid);
-//   });
+var client = require('twilio')(accountSid, authToken);
+  client.messages.create({
+    to: nextNumber(incomingNumber),
+    from: "+17203707677",
+    body: updateMessage(incomingNumber, incomingMessage)
+  }, function(err, message) {
+    console.log(message.sid);
+  });
+// {console.log('send message ', updateMessage(incomingNumber, incomingMessage), nextNumber(incomingNumber))}
 
 function notYourTurn(incomingNumber)
-{console.log(incomingNumber)}
-// var client = require('twilio')(accountSid, authToken);
-//   client.messages.create({
-//     to: incomingNumber,
-//     from: "+17203707677",
-//     body: 'Wait your turn!'
-//   }, function(err, message) {
-//     console.log(message.sid);
-//   });
+var client = require('twilio')(accountSid, authToken);
+  client.messages.create({
+    to: incomingNumber,
+    from: "+17203707677",
+    body: 'Wait your turn!'
+  }, function(err, message) {
+    console.log(message.sid);
+  });
+// {console.log(incomingNumber)}
 
 module.exports = router;

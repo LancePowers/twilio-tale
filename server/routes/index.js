@@ -14,6 +14,8 @@ var story = "";
 var activeNumber = 17192381373;
 var cohort =
 [
+{name: 'Lance', number: '+17192381373'},
+{name: 'Yusef', number: '+18082778469'},
 {name:'Alex', number:'+18593962722'},
 {name:'Amber', number: '+13039194337'},
 {name:'Ashley', number: '+19706586078'},
@@ -28,12 +30,6 @@ var cohort =
 {name: 'Keith', number:'+15856987729'},
 {name: 'Kierston', number: '+13039294135'},
 {name: 'Kyle', number: '+13034756824'},
-{name: 'Lance', number: '+17192381373'},
-{name: 'Yusef', number: '+18082778469'},
-{name: 'Lance', number: '+17192381373'},
-{name: 'Yusef', number: '+18082778469'},
-{name: 'Lance', number: '+17192381373'},
-{name: 'Yusef', number: '+18082778469'},
 {name:'Ben', number:'+19785052189'},
 {name: 'Sarah', number:'+13035200766'},
 {name: 'Lucy', number: '+14843565141'},

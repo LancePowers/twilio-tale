@@ -20,7 +20,7 @@ var cohort =
 {name:'Amber', number: '+13039194337'},
 {name:'Ashley', number: '+19706586078'},
 {name: 'Bradley', number:'+17204733643'},
-{name: 'Brandon', number: '+7207719884'},
+{name: 'Brandon', number: '+17207719884'},
 {name:'Chip', number: '+13036467088'},
 {name: 'Crytal', number: '+16163070351'},
 {name:'Dominic', number:'+19704206721'},

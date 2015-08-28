@@ -48,6 +48,7 @@ var cohort =
 
 // post method.
 router.post('/', function(req, res, next) {
+  console.log(accountSid, authToken);
   console.log(req.body.From);
   console.log(activeNumber);
   if(isUserTurn(req.body.From)){
@@ -92,7 +93,6 @@ function updateMessage(incomingNumber, incomingMessage){
 
 // sends
 function sendMessage(incomingNumber, incomingMessage) {
-console.log(accountSid, authToken);
 var client = require('twilio')(accountSid, authToken);
   client.messages.create({
     to: nextNumber(incomingNumber),

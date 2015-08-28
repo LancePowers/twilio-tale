@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var twilio = require('twilio')
+var twilio = require('twilio');
+var api = require('../api-token');
 router.get('/story', function(req,res,next){
   res.render('index',{title: story})
 })
 
+var accountSid = api.accountSid;
+var authToken = api.authToken;
 
-var accountSid = 'AC0b27ba7b433e49c90967b534102c8ad8';
-var authToken = 'c8af31735b6f91c32b06126df0905308';
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
 var story = "";
 var activeNumber = "+17192381373"
@@ -17,6 +18,7 @@ var cohort =
 {name:'Amber', number: '+13039194337'},
 {name:'Ashley', number: '+19706586078'},
 {name: 'Bradley', number:'+17204733643'},
+{name: 'Brandon', number: '+7207719884'}
 {name:'Chip', number: '+13036467088'},
 {name: 'Crytal', number: '+16163070351'},
 {name:'Dominic', number:'+19704206721'},

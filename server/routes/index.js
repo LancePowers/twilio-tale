@@ -9,6 +9,7 @@ router.get('/story', function(req,res,next){
 
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
 var story = "";
+var activeNumber = "+17192381373"
 var cohort =
 [
 {name:'Alex', number:'+18593962722'},
@@ -16,6 +17,7 @@ var cohort =
 {name:'Ashley', number: '+19706586078'},
 {name: 'Bradley', number:'+17204733643'},
 {name:'Chip', number: '+13036467088'},
+{name: 'Crytal', number: '+16163070351'},
 {name:'Dominic', number:'+19704206721'},
 {name: 'Erik', number: '+19144385692'},
 {name: 'Ethan',    number:'+13038420692'},
@@ -23,6 +25,8 @@ var cohort =
 {name: 'Keith', number:'+15856987729'},
 {name: 'Kierston', number: '+13039294135'},
 {name: 'Kyle', number: '+13034756824'},
+{name: 'Lance', number: '+17192381373'},
+{name: 'Lance', number: '+17192381373'},
 {name: 'Lance', number: '+17192381373'},
 {name: 'Yusef', number: '+18082778469'},
 {name:'Ben', number:'+19785052189'},
@@ -37,33 +41,43 @@ var cohort =
 ];
 
 function nextNumber(incomingNumber){
-  for (var i = 0; i < cohort.length; i++) {
-    if(cohort[i].number === incomingNumber){
-      return(cohort[i+1].number);
+  if(incomingNumber === cohort[cohort.length-1].number){
+    activeNumber = cohort[1].number;
+    return activeNumber;
+  } else{
+    for (var i = 0; i < cohort.length; i++) {
+      if(cohort[i].number === incomingNumber){
+        activeNumber = cohort[i+1].number;
+        return activeNumber;
+      }
     }
   }
 }
 
-function updateMessage(incomingMessage){
-  story += incomingMessage + ' \n';
-  message = incomingMessage;
-  return message;
+function updateMessage(incomingNumber, incomingMessage){
+  if(incomingNumber !== activeNumber){
+    return 'Wait your turn!';
+  } else {
+    story += incomingMessage + ' \n';
+    message = incomingMessage;
+    return message;
+ }
 }
 
 var accountSid = 'AC0b27ba7b433e49c90967b534102c8ad8';
 var authToken = 'c8af31735b6f91c32b06126df0905308';
 
 router.post('/', function(req, res, next) {
-  // var client = require('twilio')(accountSid, authToken);
-  //   client.messages.create({
-  //     to: nextNumber(req.body.From),
-  //     // to: '+17192381373',
-  //     from: "+17203707677",
-  //     body: updateMessage(req.body.Body)
-  //     // body: updateMessage(message)
-  //   }, function(err, message) {
-  //     console.log(message.sid);
-  //   });
+  var client = require('twilio')(accountSid, authToken);
+    client.messages.create({
+      to: nextNumber(req.body.From),
+      // to: '+17192381373',
+      from: "+17203707677",
+      body: updateMessage(req.body.From, req.body.Body)
+      // body: updateMessage(message)
+    }, function(err, message) {
+      console.log(message.sid);
+    });
 });
 
 module.exports = router;

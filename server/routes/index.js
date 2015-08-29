@@ -21,6 +21,7 @@ var cohort =
 {name:'Ashley', number: '+19706586078'},
 {name: 'Bradley', number:'+17204733643'},
 {name: 'Brandon', number: '+17207719884'},
+{name: 'Charlie', number: '+13039818484'},
 {name:'Chip', number: '+13036467088'},
 {name: 'Crytal', number: '+16163070351'},
 {name:'Dominic', number:'+19704206721'},
@@ -38,6 +39,7 @@ var cohort =
 {name: 'Pete', number: '+15102891955'},
 {name: 'Robert', number:'+18473464660'},
 {name: 'Suhayl', number:'+17209993948'},
+{name: 'Zach', number: '15052802605'}
 {name: 'Zoe', number:'+16036178399'}
 ];
 

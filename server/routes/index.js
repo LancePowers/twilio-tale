@@ -49,12 +49,17 @@ router.post('/', function(req, res, next) {
   console.log(req.body.From);
   console.log(activeNumber);
   if(isUserTurn(req.body.From)){
-    sendMessage(req.body.From, req.body.Body);
+    sendMessage(req.body.From, req.body.Body, req.body.MediaUrl);
   } else {
     notYourTurn(req.body.From);
   }
   res.end();
 });
+
+router.post('/test', function(req,res){
+  var tag = getImageTag(req.body.url);
+  res.send(tag);
+})
 
 //Finds the current number, sets the next as the active number and returns
 function nextNumber(incomingNumber){
@@ -112,5 +117,20 @@ var client = require('twilio')(accountSid, authToken);
   });
 }
 // {console.log(incomingNumber)}
+
+function getImageTag(url){
+  $.ajax({
+    url: 'http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',
+    method: 'GET',
+    data:{
+      apikey: api.alchemy,
+      url: url
+      outputMode: 'json',
+    },
+    success: function(response, status){
+      console.log(response.imageKeywords.text);
+    }
+  });
+};
 
 module.exports = router;

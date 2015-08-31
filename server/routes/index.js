@@ -127,13 +127,13 @@ function getImageTag(url){
     // url: 'http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',
     // method: 'GET',
     // data:{
-      apikey: '6889f9fd6f1a094a963298badffbb5cee0046edf',
+      apikey: '9091af0333d153485f16109521984d39b19ba7ac',
       url: 'http://img.timeinc.net/time/daily/2010/1011/poy_nomination_agassi.jpg',
       outputMode: 'json',
     // }
   }, function(error, response, body) {
     console.log(body);
-  })  
+  })
 };
 
 module.exports = router;

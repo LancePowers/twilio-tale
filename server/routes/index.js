@@ -123,7 +123,7 @@ var client = require('twilio')(accountSid, authToken);
 
 function getImageTag(url){
   console.log('in getImageTag');
-  var answer = request.get('http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords', {
+  request.get('http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords', {
     // url: 'http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',
     // method: 'GET',
     // data:{
@@ -131,8 +131,9 @@ function getImageTag(url){
       url: 'http://img.timeinc.net/time/daily/2010/1011/poy_nomination_agassi.jpg',
       outputMode: 'json',
     // }
-  })
-  console.log(answer);
+  }, function(error, response, body) {
+    console.log(body);
+  })  
 };
 
 module.exports = router;

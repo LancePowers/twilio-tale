@@ -6,7 +6,7 @@ var AlchemyAPI = require('alchemy-api');
 var alchemy = new AlchemyAPI('9091af0333d153485f16109521984d39b19ba7ac');
 
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
-var story = ['wow that looks pretty said dom', 'thats how all my code looks', 'he added'];
+var story = [];
 var activeNumber = 17192381373;
 var client = require('twilio')(accountSid, authToken);
 var cohort =
@@ -67,7 +67,7 @@ function isUserTurn(incomingNumber){
 
 // adds incoming message to story, updates the message var, and returns.
 function updateMessage(incomingNumber, incomingMessage){
-    story += incomingMessage + ' \n';
+    story.push(incomingMessage);
     message = incomingMessage;
     return message;
 }

@@ -122,7 +122,7 @@ var client = require('twilio')(accountSid, authToken);
 
 
 function getImageTag(url){
-  console.log('in getImageTag')
+  console.log('in getImageTag');
   var answer = request.get('http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',JSON.stringify({
     url: 'http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',
     method: 'GET',
@@ -132,6 +132,7 @@ function getImageTag(url){
       outputMode: 'json',
     }
   })
+  console.log(answer);
 )};
 
 module.exports = router;

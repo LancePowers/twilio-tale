@@ -131,8 +131,8 @@ function getImageTag(url){
       url: url,
       outputMode: 'json',
     }
-  })
+  }))
   console.log(answer);
-)};
+};
 
 module.exports = router;

@@ -58,7 +58,8 @@ router.post('/', function(req, res, next) {
 
 router.post('/test', function(req,res){
   var tag = getImageTag(req.body.url);
-  res.send(tag);
+  console.log(req.body.url);
+  res.send(req);
 })
 
 //Finds the current number, sets the next as the active number and returns

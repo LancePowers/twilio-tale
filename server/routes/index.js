@@ -124,7 +124,7 @@ function getImageTag(url){
     method: 'GET',
     data:{
       apikey: api.alchemy,
-      url: url
+      url: url,
       outputMode: 'json',
     },
     success: function(response, status){

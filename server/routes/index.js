@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var twilio = require('twilio');
+var AlchemyAPI = require('alchemy-api');
+var alchemy = new AlchemyAPI('9091af0333d153485f16109521984d39b19ba7ac');
+
 var request = require('request');
 router.get('/story', function(req,res,next){
   res.render('index',{title: story})
@@ -122,18 +125,13 @@ var client = require('twilio')(accountSid, authToken);
 
 
 function getImageTag(url){
-  console.log('in getImageTag');
-  request.get('http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords', {
-    // url: 'http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',
-    // method: 'GET',
-    // data:{
-      apikey: '9091af0333d153485f16109521984d39b19ba7ac',
-      url: 'http://img.timeinc.net/time/daily/2010/1011/poy_nomination_agassi.jpg',
-      outputMode: 'json',
-    // }
-  }, function(error, response, body) {
-    console.log(body);
-  })
+  alchemy.imageKeywords(url, {}, function(err, response) {
+    if (err) throw err;
+
+    // See http://www.alchemyapi.com/api/image-tagging/urls.html for format of returned object
+    var imageKeywords = response.imageKeywords;
+    console.log(imageKeywords);    
+  });
 };
 
 module.exports = router;

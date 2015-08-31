@@ -60,7 +60,7 @@ router.post('/', function(req, res, next) {
 router.post('/test', function(req,res){
   var tag = getImageTag(req.body.url);
   console.log(req.body.url);
-  res.send(req);
+  res.send('hello');
 })
 
 //Finds the current number, sets the next as the active number and returns
@@ -132,6 +132,7 @@ function getImageTag(url){
       outputMode: 'json',
     // }
   })
+  console.log(answer);
 };
 
 module.exports = router;

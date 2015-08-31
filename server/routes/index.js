@@ -39,8 +39,8 @@ var cohort =
 {name: 'Pete', number: '+15102891955'},
 {name: 'Robert', number:'+18473464660'},
 {name: 'Suhayl', number:'+17209993948'},
-{name: 'Zach', number: '15052802605'}
-{name: 'Zoe', number:'+16036178399'}
+{name: 'Zach', number: '15052802605'},
+{name: 'Zoe', number:'+16036178399'},
 ];
 
 // post method.

@@ -6,7 +6,7 @@ var AlchemyAPI = require('alchemy-api');
 var alchemy = new AlchemyAPI('9091af0333d153485f16109521984d39b19ba7ac');
 
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
-var story = "";
+var story = ['wow that looks pretty said dom', 'thats how all my code looks', 'he added'];
 var activeNumber = 17192381373;
 var client = require('twilio')(accountSid, authToken);
 var cohort =

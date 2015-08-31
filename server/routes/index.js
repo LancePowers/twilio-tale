@@ -19,7 +19,7 @@ router.post('/test', function(req,res){
   res.end();
 })
 router.get('/story', function(req,res,next){
-  res.render('index',{title: utility.story})
+  res.render('index', {story: utility.story})
 })
 
 module.exports = router;

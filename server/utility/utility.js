@@ -100,8 +100,6 @@ function notYourTurn(incomingNumber) {
 function getImageTag(url){
   alchemy.imageKeywords(url, {}, function(err, response) {
     if (err) throw err;
-
-    // See http://www.alchemyapi.com/api/image-tagging/urls.html for format of returned object
     var imageKeywords = response.imageKeywords;
     console.log(imageKeywords);
   });

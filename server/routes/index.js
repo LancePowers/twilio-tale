@@ -16,6 +16,7 @@ router.post('/', function(req, res, next) {
 
 router.post('/test', function(req,res){
   var tag = utility.getImageTag(req.body.url);
+  res.end();
 })
 router.get('/story', function(req,res,next){
   res.render('index',{title: utility.story})

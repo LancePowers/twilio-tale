@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var twilio = require('twilio');
 var utility = require('../utility/utility.js')
-var AlchemyAPI = require('alchemy-api');
-var alchemy = new AlchemyAPI('9091af0333d153485f16109521984d39b19ba7ac');
+
 
 // post method.
 router.post('/', function(req, res, next) {

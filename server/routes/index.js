@@ -128,7 +128,7 @@ function getImageTag(url){
     // method: 'GET',
     // data:{
       apikey: '6889f9fd6f1a094a963298badffbb5cee0046edf',
-      url: url,
+      url: 'http://img.timeinc.net/time/daily/2010/1011/poy_nomination_agassi.jpg',
       outputMode: 'json',
     // }
   })

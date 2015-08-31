@@ -67,7 +67,7 @@ function isUserTurn(incomingNumber){
 
 // adds incoming message to story, updates the message var, and returns.
 function updateMessage(incomingMessage, incomingPicture){
-    var image = '<img src='+incomingPicture+'/>';
+    var image = '<img src="'+incomingPicture+'"/>';
     story.push(incomingMessage);
     story.push(image);
     message = incomingMessage;

@@ -123,16 +123,15 @@ var client = require('twilio')(accountSid, authToken);
 
 function getImageTag(url){
   console.log('in getImageTag');
-  var answer = request.get('http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords', JSON.stringify({
+  var answer = request.get('http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords', {
     // url: 'http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',
-    method: 'GET',
-    data:{
+    // method: 'GET',
+    // data:{
       apikey: '6889f9fd6f1a094a963298badffbb5cee0046edf',
       url: url,
       outputMode: 'json',
-    }
-  }))
-  console.log(answer);
+    // }
+  })
 };
 
 module.exports = router;

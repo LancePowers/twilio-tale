@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var twilio = require('twilio');
+var request = require('request');
 router.get('/story', function(req,res,next){
   res.render('index',{title: story})
 })
@@ -119,19 +120,30 @@ var client = require('twilio')(accountSid, authToken);
 }
 // {console.log(incomingNumber)}
 
+
 function getImageTag(url){
-  $.ajax({
+  var answer = request.get('http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',{
     url: 'http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',
     method: 'GET',
     data:{
-      apikey: api.alchemy,
+      apikey: '6889f9fd6f1a094a963298badffbb5cee0046edf',
       url: url,
       outputMode: 'json',
-    },
-    success: function(response, status){
-      console.log(response.imageKeywords.text);
     }
-  });
+  })
+  
+  // $.ajax({
+  //   url: 'http://access.alchemyapi.com/calls/url/URLGetRankedImageKeywords',
+  //   method: 'GET',
+  //   data:{
+  //     apikey: '6889f9fd6f1a094a963298badffbb5cee0046edf',
+  //     url: url,
+  //     outputMode: 'json',
+  //   },
+  //   success: function(response, status){
+  //     console.log(response.imageKeywords.text);
+  //   }
+  // });
 };
 
 module.exports = router;

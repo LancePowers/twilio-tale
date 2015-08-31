@@ -5,14 +5,11 @@
 
 {% block content %}
 
-  <div id="flipbook">
-    <div class="hard"> Twilio Tale </div>
-    <div class="hard"></div>
+  <div>
+    <div> Twilio Tale </div>
     {% for page in story %}
       <div>{{ page }}</div>
     {% endfor %}
-    <div class="hard"></div>
-    <div class="hard"></div>
   </div>
 
 {% endblock %}

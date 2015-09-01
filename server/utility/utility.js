@@ -74,7 +74,7 @@ function updateMessage(incomingMessage, incomingPicture){
 
 // sends
 function sendMessage(incomingNumber, incomingMessage, incomingPicture) {
-console.log('function updateMessage('incomingNumber+','+incomingMessage+','+incomingPicture+')')
+console.log('function updateMessage('+incomingNumber+','+incomingMessage+','+incomingPicture+')')
 var client = require('twilio')(api.accountSid, api.authToken);
   client.messages.create({
     to: nextNumber(incomingNumber),

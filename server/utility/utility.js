@@ -67,21 +67,22 @@ function isUserTurn(incomingNumber){
 function updateMessage(incomingMessage, incomingPicture){
     var page = {picture:incomingPicture, message: incomingMessage};
     story.push(page);
+    console.log(incomingMessage)
     message = incomingMessage;
-    console.log('function updateMessage',activeNumber);
+    console.log('function updateMessage', activeNumber, message);
     return message;
 }
 
 // sends
 function sendMessage(incomingNumber, incomingMessage) {
 var client = require('twilio')(api.accountSid, api.authToken);
-  console.log('here in sendMessage')
+  console.log('here in sendMessage');
   client.messages.create({
     to: nextNumber(incomingNumber),
     from: "+17203707677",
     body: updateMessage(incomingNumber, incomingMessage)
   }, function(err, message) {
-    console.log('error from send');
+    console.log('error from send', err);
   });
 }
 // {console.log('send message ', updateMessage(incomingNumber, incomingMessage), nextNumber(incomingNumber))}

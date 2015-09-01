@@ -40,11 +40,13 @@ var cohort =
 function nextNumber(incomingNumber){
   if(isLastNumber(incomingNumber)){
     activeNumber = cohort[0].number;
+    console.log('function nextNumber lastnumber', activeNumber)
     return activeNumber;
   }
   for (var i = 0; i < cohort.length; i++) {
     if(cohort[i].number === incomingNumber){
       activeNumber = cohort[i+1].number;
+      console.log('function nextNumber', activeNumber)
       return activeNumber;
     }
   }
@@ -66,7 +68,7 @@ function updateMessage(incomingMessage, incomingPicture){
     var page = {picture:incomingPicture, message: incomingMessage};
     story.push(page);
     message = incomingMessage;
-    console.log(activeNumber);
+    console.log('function updateMessage',activeNumber);
     return message;
 }
 

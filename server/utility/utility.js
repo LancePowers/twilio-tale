@@ -1,6 +1,6 @@
 
 var request = require('request');
-var api = require('../api-token')
+var api = require('../api-token');
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
 var story = [];
 var activeNumber = 17192381373;

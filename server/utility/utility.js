@@ -66,6 +66,7 @@ function updateMessage(incomingMessage, incomingPicture){
     var page = {picture:incomingPicture, message: incomingMessage};
     story.push(page);
     message = incomingMessage;
+    console.log(activeNumber);
     return message;
 }
 
@@ -78,7 +79,7 @@ var client = require('twilio')(api.accountSid, api.authToken);
     from: "+17203707677",
     body: updateMessage(incomingNumber, incomingMessage)
   }, function(err, message) {
-    console.log(incomingMessage, incomingNumber);
+    console.log('error from send');
   });
 }
 // {console.log('send message ', updateMessage(incomingNumber, incomingMessage), nextNumber(incomingNumber))}

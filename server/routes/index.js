@@ -6,9 +6,9 @@ var utility = require('../utility/utility.js')
 
 // post method.
 router.post('/', function(req, res, next) {
-  console.log(req.body.MediaUrl0);
+  console.log(req.body);
   if(utility.isUserTurn(req.body.From)){
-    utility.sendMessage(req.body.Body, req.body.MediaUrl0);
+    utility.sendMessage(req.body.From, req.body.Body, req.body.MediaUrl0);
   } else {
     utility.notYourTurn(req.body.From);
   }

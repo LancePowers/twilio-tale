@@ -38,15 +38,15 @@ var cohort =
 
 //Finds the current number, sets the next as the active number and returns
 function nextNumber(incomingNumber){
+  console.log('function nextNumber('+incomingNumber+')')
   if(isLastNumber(incomingNumber)){
     activeNumber = cohort[0].number;
-    console.log('function nextNumber lastnumber', activeNumber)
     return activeNumber;
   }
   for (var i = 0; i < cohort.length; i++) {
     if(cohort[i].number === incomingNumber){
       activeNumber = cohort[i+1].number;
-      console.log('function nextNumber', activeNumber,cohort[0])
+      //console.log('function nextNumber', activeNumber,cohort[0])
       return activeNumber;
     }
   }
@@ -65,18 +65,17 @@ function isUserTurn(incomingNumber){
 
 // adds incoming message to story, updates the message var, and returns.
 function updateMessage(incomingMessage, incomingPicture){
+    console.log('function updateMessage('+incomingMessage+','+incomingPicture+')')
     var page = {picture:incomingPicture, message: incomingMessage};
     story.push(page);
-    console.log(incomingMessage)
     message = incomingMessage;
-    console.log('function updateMessage', activeNumber, message);
     return message;
 }
 
 // sends
 function sendMessage(incomingNumber, incomingMessage, incomingPicture) {
+console.log('function updateMessage('incomingNumber+','+incomingMessage+','+incomingPicture+')')
 var client = require('twilio')(api.accountSid, api.authToken);
-  console.log('here in sendMessage');
   client.messages.create({
     to: nextNumber(incomingNumber),
     from: "+17203707677",

@@ -74,13 +74,13 @@ function updateMessage(incomingMessage, incomingPicture){
 }
 
 // sends
-function sendMessage(incomingNumber, incomingMessage) {
+function sendMessage(incomingNumber, incomingMessage, incomingPicture) {
 var client = require('twilio')(api.accountSid, api.authToken);
   console.log('here in sendMessage');
   client.messages.create({
     to: nextNumber(incomingNumber),
     from: "+17203707677",
-    body: updateMessage(incomingNumber, incomingMessage)
+    body: updateMessage(incomingMessage, incomingPicture)
   }, function(err, message) {
     console.log('error from send', err);
   });

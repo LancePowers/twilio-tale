@@ -1,10 +1,10 @@
 
 var request = require('request');
-
+var api = require('../api-token')
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
 var story = [];
 var activeNumber = 17192381373;
-var client = require('twilio')(accountSid, authToken);
+var client = require('twilio')(api.accountSid, api.authToken);
 var cohort =
 [
 {name: 'Lance', number: '+17192381373'},
@@ -63,16 +63,15 @@ function isUserTurn(incomingNumber){
 
 // adds incoming message to story, updates the message var, and returns.
 function updateMessage(incomingMessage, incomingPicture){
-    var image = '<img src="'+incomingPicture+'"/>';
-    story.push(incomingMessage);
-    story.push(image);
+    var page = {picture:incomingPicture, message: incomingMessage};
+    story.push(page);
     message = incomingMessage;
     return message;
 }
 
 // sends
 function sendMessage(incomingNumber, incomingMessage) {
-var client = require('twilio')(accountSid, authToken);
+var client = require('twilio')(api.accountSid, api.authToken);
   client.messages.create({
     to: nextNumber(incomingNumber),
     from: "+17203707677",
@@ -96,7 +95,7 @@ function notYourTurn(incomingNumber) {
 
 
 function getImageTag(url){
-  alchemy.imageKeywords(url, {}, function(err, response) {
+  api.alchemy.imageKeywords(url, {}, function(err, response) {
     if (err) throw err;
     var imageKeywords = response.imageKeywords;
     console.log(imageKeywords);

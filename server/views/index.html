@@ -6,13 +6,13 @@
 {% block content %}
 
   <div>
-    <div> Twilio Tale </div>
-    <!-- {% for page in story %}
-      <div>{{ page }}</div>
-    {% endfor %} -->
-    {% for page in story %}
-      <img src = {{ page }}/>
-    {% endfor %}
+   <div> Twilio Tale </div>
+   {% for page in story %}
+     <img src = {{ page.picture }} >
+     <p>
+       {{ page.message }}
+     </p>
+   {% endfor %}
   </div>
 
 {% endblock %}

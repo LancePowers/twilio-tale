@@ -9,7 +9,6 @@ var cohort =
 [
 {name: 'Lance', number: '+17192381373'},
 {name: 'Yusef', number: '+18082778469'},
-{name:'Alex', number:'+18593962722'},
 {name:'Amber', number: '+13039194337'},
 {name:'Ashley', number: '+19706586078'},
 {name: 'Bradley', number:'+17204733643'},
@@ -83,6 +82,11 @@ var client = require('twilio')(api.accountSid, api.authToken);
   }, function(err, message) {
     console.log('error from send', err);
   });
+  client.messages.create({
+    to: incomingNumber,
+    from: "+17203707677",
+    body: 'I love stories! Thank you for making this one for me. We can read it together if you want... - twilio-thanks.herokuapp.com/story',  
+  })
 }
 // {console.log('send message ', updateMessage(incomingNumber, incomingMessage), nextNumber(incomingNumber))}
 

@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+  <form method = "post">
+    <div class="form-group">
+      <label for="page-to-splice">Page to Remove</label>
+      <input type="number" class="form-control" name = "index" placeholder="splice index">
+    </div>
+    <button type="submit" class="btn btn-default">REMOVE</button>
+  </form>
+  <div class="container">
+    {% for page in story %}
+    <div>
+      {{ loop.index }} - {{ page.picture }} - {{ page.message }}
+    </div>
+  {% endfor %}
+  </div>
+
+{% endblock %}

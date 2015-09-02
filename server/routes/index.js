@@ -15,12 +15,25 @@ router.post('/', function(req, res, next) {
   res.end();
 });
 
-router.post('/test', function(req,res){
+router.post('/hunt', function(req,res){
   var tag = utility.getImageTag(req.body.url);
   res.end();
 })
+
 router.get('/story', function(req,res,next){
   res.render('index', {story: utility.story})
 })
+
+router.get('/story/edit', function(req,res,next){
+  res.render('edit', {story: utility.story})
+})
+
+router.post('/story/edit', function(req,res){
+  console.log(req.body.index);
+  utility.story.splice((req.body.index - 1),1);
+  res.redirect('/story');
+})
+
+
 
 module.exports = router;

@@ -2,17 +2,13 @@
 var request = require('request');
 var api = require('../api-token');
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
-// var story = [];
-var story = [
-  {picture:'Pretty Picture', message: 'Nice Message'},
-  {picture: 'Dick Pic', message: 'Fuck off'},
-  {picture:'Pretty Picture', message: 'Nice Message'},
-];
+var story = [];
 var activeNumber = 17192381373;
 var client = require('twilio')(api.accountSid, api.authToken);
 var cohort =
 [
 {name: 'Lance', number: '+17192381373'},
+{name: 'Zoe', number:'+16036178399'},
 {name: 'Yusef', number: '+18082778469'},
 {name:'Amber', number: '+13039194337'},
 {name:'Ashley', number: '+19706586078'},
@@ -37,7 +33,6 @@ var cohort =
 {name: 'Robert', number:'+18473464660'},
 {name: 'Suhayl', number:'+17209993948'},
 {name: 'Zach', number: '15052802605'},
-{name: 'Zoe', number:'+16036178399'},
 {name: 'Michael', number: '+14156805773'},
 ];
 
@@ -59,7 +54,10 @@ function nextNumber(incomingNumber){
 
 //determines if the incoming number is the last in the array.
 function isLastNumber(incomingNumber){
-  if(incomingNumber === cohort[cohort.length-1].number){ return true; }
+  if(incomingNumber === cohort[cohort.length-1].number){
+    console.log(story);
+    return true;
+  }
 }
 
 //determines if the incoming message is from the next user.
@@ -89,7 +87,7 @@ var client = require('twilio')(api.accountSid, api.authToken);
   }, function(err, message) {
     console.log('sent', err);
   });
-// send verification text   
+// send verification text
   client.messages.create({
     to: incomingNumber,
     from: "+17203707677",

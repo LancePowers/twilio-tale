@@ -80,13 +80,16 @@ var client = require('twilio')(api.accountSid, api.authToken);
     from: "+17203707677",
     body: updateMessage(incomingMessage, incomingPicture)
   }, function(err, message) {
-    console.log('error from send', err);
+    console.log('sent', err);
   });
   client.messages.create({
     to: incomingNumber,
     from: "+17203707677",
-    body: 'I love stories! Thank you for making this one for me. We can read it together if you want... - twilio-thanks.herokuapp.com/story',  
-  })
+    body: 'I love stories! Thank you for making this one for me. We can read it together if you want... - twilio-thanks.herokuapp.com/story',
+    mediaUrl: 'https://twilio-thanks.herokuapp.com/img/mike-thanks.png'
+  }, function(err, message){
+        console.log(incomingNumber,'confirmed')
+  });
 }
 // {console.log('send message ', updateMessage(incomingNumber, incomingMessage), nextNumber(incomingNumber))}
 

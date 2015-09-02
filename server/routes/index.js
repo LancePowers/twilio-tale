@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var twilio = require('twilio');
-var utility = require('../utility/utility.js')
+var utility = require('../utility/utility.js');
+var hunt = require('../utility/scavenger.js');
 
 
 // post method.
@@ -16,7 +17,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/hunt', function(req,res){
-  var tag = utility.getImageTag(req.body.url);
+  hunt.processText( req.body );
   res.end();
 })
 

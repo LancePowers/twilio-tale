@@ -81,6 +81,7 @@ function updateMessage(incomingMessage, incomingPicture){
 function sendMessage(incomingNumber, incomingMessage, incomingPicture) {
 console.log('function sendMessage('+incomingNumber+','+incomingMessage+','+incomingPicture+')')
 var client = require('twilio')(api.accountSid, api.authToken);
+//send to next player
   client.messages.create({
     to: nextNumber(incomingNumber),
     from: "+17203707677",
@@ -88,6 +89,7 @@ var client = require('twilio')(api.accountSid, api.authToken);
   }, function(err, message) {
     console.log('sent', err);
   });
+// send verification text   
   client.messages.create({
     to: incomingNumber,
     from: "+17203707677",

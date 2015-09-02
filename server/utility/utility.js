@@ -8,8 +8,6 @@ var client = require('twilio')(api.accountSid, api.authToken);
 var cohort =
 [
 {name: 'Lance', number: '+17192381373'},
-{name: 'Zoe', number:'+16036178399'},
-{name: 'Yusef', number: '+18082778469'},
 {name:'Amber', number: '+13039194337'},
 {name:'Ashley', number: '+19706586078'},
 {name: 'Bradley', number:'+17204733643'},
@@ -32,7 +30,9 @@ var cohort =
 {name: 'Pete', number: '+15102891955'},
 {name: 'Robert', number:'+18473464660'},
 {name: 'Suhayl', number:'+17209993948'},
+{name: 'Yusef', number: '+18082778469'},
 {name: 'Zach', number: '15052802605'},
+{name: 'Zoe', number:'+16036178399'},
 {name: 'Michael', number: '+14156805773'},
 ];
 

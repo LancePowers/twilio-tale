@@ -12,7 +12,7 @@ router.post('/', function(req, res, next) {
   console.log(req.body);
 
   ////store to db
-  new Message({req.body.Body, req.body.MediaUrl0})
+  new Message({body: req.body.Body, mediaUrl0: req.body.MediaUrl0})
   .save(function(err, data) {
 
     //// determine what to do with the message

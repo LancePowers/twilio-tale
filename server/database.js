@@ -8,6 +8,5 @@ var Message = new Schema(
   }
 );
 
-mongoose.model('superheros', Superhero);
-
-mongoose.connect('mongodb://localhost/node-superhero');
+mongoose.model('messages', Message);
+mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost/node-message")

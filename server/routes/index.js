@@ -3,6 +3,8 @@ var router = express.Router();
 var twilio = require('twilio');
 var utility = require('../utility/utility.js');
 var hunt = require('../utility/scavenger.js');
+var mongoose = require('mongoose');
+var Message = mongoose.model('messages');
 
 
 // post method.
@@ -11,7 +13,7 @@ router.post('/', function(req, res, next) {
 
   ////store to db
   new Message(req.body)
-  .save(function(err, superhero) {
+  .save(function(err, data) {
     // console.log(superhero);
     res.json({message: 'Success!'});
   });

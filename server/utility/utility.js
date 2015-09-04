@@ -4,6 +4,7 @@ var api = require('../api-token');
 var message = "Once upon a time, Matthew the evangelist descended upon the land of Galvanize to enlighten and expand young minds..."
 var story = [];
 var activeNumber = 17192381373;
+var activeName = 'Lance';
 var client = require('twilio')(api.accountSid, api.authToken);
 var cohort =
 [
@@ -46,6 +47,7 @@ function nextNumber(incomingNumber){
   for (var i = 0; i < cohort.length; i++) {
     if(cohort[i].number === incomingNumber){
       activeNumber = cohort[i+1].number;
+      activeNumber = cohort[i+1].name;
       //console.log('function nextNumber', activeNumber,cohort[0])
       return activeNumber;
     }
@@ -110,13 +112,13 @@ function notYourTurn(incomingNumber) {
 }
 // {console.log(incomingNumber)}
 
-function turn(){
-  for (var i = 0; i < cohort.length; i++) {
-    if(cohort[i].number === incomingNumber){
-      return cohort[i].name;
-    }
-  }
-}
+// function turn(){
+//   for (var i = 0; i < cohort.length; i++) {
+//     if(cohort[i].number === incomingNumber){
+//       return cohort[i].name;
+//     }
+//   }
+// }
 
 
 module.exports = {

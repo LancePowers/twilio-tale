@@ -31,7 +31,7 @@ router.post('/hunt', function(req,res){
 })
 
 router.get('/turn', function(req,res,next){
-  res.render('index', {user: utility.turn()})
+  res.render('index', {user: utility.activeName})
 })
 
 router.get('/story', function(req,res,next){

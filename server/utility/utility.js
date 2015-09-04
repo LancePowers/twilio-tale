@@ -129,4 +129,5 @@ module.exports = {
   sendMessage: sendMessage,
   notYourTurn: notYourTurn,
   story: story,
+  activeName: activeName,
 }

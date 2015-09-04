@@ -12,19 +12,17 @@ router.post('/', function(req, res, next) {
   console.log(req.body);
 
   ////store to db
-  new Message(req.body)
+  new Message({req.body.Body, req.body.MediaUrl0})
   .save(function(err, data) {
-    // console.log(superhero);
-    res.json({message: 'Success!'});
-  });
 
-  //// determine what to do with the message
-  if(utility.isUserTurn(req.body.From)){
-    utility.sendMessage(req.body.From, req.body.Body, req.body.MediaUrl0);
-  } else {
-    utility.notYourTurn(req.body.From);
-  }
-  res.end();
+    //// determine what to do with the message
+    if(utility.isUserTurn(req.body.From)){
+      utility.sendMessage(req.body.From, req.body.Body, req.body.MediaUrl0);
+    } else {
+      utility.notYourTurn(req.body.From);
+    }
+    res.end();
+  });
 });
 
 router.post('/hunt', function(req,res){

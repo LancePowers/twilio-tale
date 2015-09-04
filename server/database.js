@@ -3,8 +3,8 @@ var Schema   = mongoose.Schema;
 
 var Message = new Schema(
   {
-    body: String,
-    mediaUrl0: String,
+    Body: String,
+    MediaUrl0: String,
   }
 );
 

@@ -47,7 +47,7 @@ function nextNumber(incomingNumber){
   for (var i = 0; i < cohort.length; i++) {
     if(cohort[i].number === incomingNumber){
       activeNumber = cohort[i+1].number;
-      activeNumber = cohort[i+1].name;
+      activeName = cohort[i+1].name;
       //console.log('function nextNumber', activeNumber,cohort[0])
       return activeNumber;
     }

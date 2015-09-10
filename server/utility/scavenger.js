@@ -1,4 +1,4 @@
-var api = require('../api-token');
+var api = require('../_config.js');
 var client = require('twilio')(api.accountSid, api.authToken);
 
 function Game(name){

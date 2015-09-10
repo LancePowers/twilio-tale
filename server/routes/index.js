@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var twilio = require('twilio');
 var utility = require('../utility/utility.js');
+var config = require('../_config.js');
 var hunt = require('../utility/scavenger.js');
 var mongoose = require('mongoose');
 var Message = mongoose.model('messages');
@@ -31,11 +32,15 @@ router.post('/hunt', function(req,res){
 })
 
 router.get('/turn', function(req,res,next){
-  res.render('turn', {user: utility.activeName})
+  res.render('turn', {user: config.activeName})
 })
 
 router.get('/story', function(req,res,next){
   res.render('index', {story: utility.story})
+})
+
+router.get('/', function(req,res,next){
+  res.redirect('/story');
 })
 
 router.get('/story/edit', function(req,res,next){

@@ -1,4 +1,5 @@
 node_modules/
 .DS_Store
 npm-debug.log
-server/_config.js
+server/_keys.js
+env.sh
